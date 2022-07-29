@@ -11,12 +11,16 @@ const totalLength=32;
 const KEY=Buffer.concat([key],totalLength)
 var myBuffer = [];
 var str = KEY;
+
+// for testing purpose only
 var buffer = new Buffer.from(str, 'utf16le');
 for (var i = 0; i < buffer.length; i++) {
     myBuffer.push(buffer[i]);
 }
 
 console.log(myBuffer);
+
+// testing purpose end
 
 const IV=Buffer.from(`a5e678ac-6e25-4b57-b134-ad3126719d6c`);
 
@@ -52,6 +56,7 @@ const padded=Padder.pad(plainText,32);
 // Create Rijndael instance
 // `new Rijndael(key, mode)`
 const cipher = new Rijndael(KEY, 'cbc');
+// const cipher = new Rijndael(myBuffer, 'cbc');
 console.log(cipher);
  
 // `Rijndael.encrypt(plaintext, blockSize[, iv]) -> <Array>`
